@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:f="http://java.sun.com/jsf/core"
+    xmlns:h="http://java.sun.com/jsf/html"
+    xmlns:p="http://primefaces.org/ui">
+ 
+<h:head>
+    <title>Cupones y Categorias</title>
+</h:head>
+<h:body>
+
+<h:form>
+
+    <p:carousel value="#{categoriesBean.categoriasTop5}" headerText="Categorias top 5" var="valor" itemStyle="height:250px;text-align:center" numVisible="1" easing="easeOutBounce" style="width:400px" circular="true">
+        <h:panelGrid columns="2" style="width:100%" columnClasses="label,value">
+            <f:facet name="header">
+                <p:graphicImage height="200px" url="#{valor.iconImageUrl}"/> 
+            </f:facet>
+ 
+            <h:outputText value="Categoria" />
+            <h:outputText value="#{valor.name}" />
+ 
+        </h:panelGrid>
+    </p:carousel> 
+
+</h:form>
+<h3> </h3>
+<h:form>
+
+    <p:carousel value="#{cuponesBean.listaImagenes}" headerText="Cupones" var="valor" itemStyle="height:250px;text-align:center" numVisible="1" easing="easeOutBounce" style="width:400px" circular="true">
+        <h:panelGrid columns="2" style="width:100%" columnClasses="label,value">
+            <f:facet name="header">
+                <p:graphicImage height="200px" url="#{valor.image}"/> 
+            </f:facet>
+ 
+            <h:outputText value="Descripción" />
+            <h:outputText value="#{valor.description}" />
+ 
+        </h:panelGrid>
+    </p:carousel> 
+
+</h:form>
+<h3> </h3>
+<h:form>
+	<p:dataTable var="lista" value="#{categoriesBean.categoriasRestantes}" style="width:400px">
+	    <f:facet name="header">
+        Categorias restantes
+    	</f:facet>
+	    <p:column headerText="Id">
+	        <h:outputText value="#{lista.id}" />
+	    </p:column>
+	 
+	    <p:column headerText="Nombre">
+	        <h:outputText value="#{lista.name}" />
+	    </p:column>
+	 
+	    <p:column headerText="Relevancia">
+	        <h:outputText value="#{lista.relevance}" />
+	    </p:column>
+	 
+	</p:dataTable>
+</h:form>
+
+</h:body>
+</html>      
